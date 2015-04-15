@@ -1,0 +1,6 @@
+2015-04-16
+Version：0.0.1
+Description：
+	上传easyui的工程文件，easyui的版本为1.4.2；
+	上传knockoutjs的js文件，knockoutjs的版本为3.3.0；
+	创建工程的js文件easyui.knockoutjs.bindingHandlers.js。
