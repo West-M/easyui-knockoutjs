@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Basic Draggable - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../../../jquery-easyui-1.4.2/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../../jquery-easyui-1.4.2/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../../../jquery-easyui-1.4.2/demo/demo.css">
+	<script type="text/javascript" src="../../../jquery-easyui-1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../jquery-easyui-1.4.2/jquery.easyui.min.js"></script>
+	<script type='text/javascript' src='../../../knockoutjs/knockout-3.3.0.js'></script>
+	<script type='text/javascript' src='../../easyui.knockoutjs.bindingHandlers.js'></script>
+</head>
+<body>
+	<h2>Basic Draggable</h2>
+	<p>Move the boxes below by clicking on it with mouse.</p>
+	<div style="margin:20px 0;"></div>
+	<div data-bind="draggable:d1" style="width:200px;height:150px;background:#fafafa;border:1px solid #ccc"></div>
+	<div data-bind="draggable:'d2'" data-options="handle:'#title'" style="width:200px;height:150px;background:#fafafa;border:1px solid #ccc;margin-top:10px">
+		<div id="title" style="padding:5px;background:#ccc;color:#fff">Title</div>
+	</div>
+	
+	<script type="text/javascript">
+		var bindViewModel = function(){
+			this.d1 = {};
+			this.d2 = ko.observable();
+		};
+		
+		
+		var bindVM=new bindViewModel();
+		ko.applyBindings(bindVM);
+	</script>
+</body>
+</html>

@@ -14,7 +14,7 @@
 		if($.fn[plugin] && $.fn[plugin].parseOptions){
 			var options = $.extend({}, $.fn[plugin].defaults, $.fn[plugin].parseOptions(element));
 			//$.extend(baseModel, $.fn[plugin].defaults, options);
-			$.each(options,function(name, value){
+			/*$.each(options,function(name, value){
 				var option = {},observableOption={};
 				//option[name] = ko.observable(value);
 				//option[name] = value;
@@ -29,7 +29,9 @@
 					$.extend(baseModel.options, option);
 					
 				}
-			});
+			});*/
+			// 解析easyui控件
+			$(element)[plugin](options);
 		}
 		return baseModel;
 	};
@@ -54,19 +56,16 @@
 		if($.fn[plugin] && typeof $.fn[plugin] === 'function'){
 			ko.bindingHandlers[plugin] = {
 				init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-					console.info(element,viewModel);
-					console.info(valueAccessor,valueAccessor(),viewModel[valueAccessor()]);
+					console.info(element)
+					console.info(typeof valueAccessor(),valueAccessor,valueAccessor(),ko.isObservable(allBindings))
+					console.info(allBindings)
+					console.info(viewModel)
+					console.info(bindingContext)
+					console.info(123,bindingContext.$data[valueAccessor],bindingContext.$data[valueAccessor()])
 					var cc = viewModel[valueAccessor()];
-					console.info(valueAccessor.name,cc,cc&&cc())
-					console.info(allBindings,allBindings,allBindings.get('f1'),plugin,allBindings.has(plugin));
-					console.info(viewModel,viewModel.d1);
-					console.info(bindingContext);
-					window.aa = new EasyuiPluginBaseModel(element, plugin);
-					$.extend(cc,window.aa);
-					return 123;
+					cc = new EasyuiPluginBaseModel(element, plugin);
 				},
 				update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
-					console.info(789)
 				}
 			};
 		}
